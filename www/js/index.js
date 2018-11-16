@@ -41,13 +41,18 @@ var app = {
 
         console.log('Received Event: ' + id);
 
-        setTimeout(() => test(), 3000);
+        setTimeout(() => test(), 5000);
     }
 
 
 };
 test = function () {
-    var ref = cordova.InAppBrowser.open('https://www.google.com', '_system');
-    setTimeout(() => ref.close(), 1000);
+    console.log('open IAP');
+    var ref = cordova.InAppBrowser.open('https://www.google.com', '_blank');
+    setTimeout(() => {
+        console.log('and close again'); 
+        console.log('ref', ref);
+        ref.close();
+    }, 2000);
 }
 app.initialize();
